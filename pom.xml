@@ -16,6 +16,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
+        <shardingdb_version>${project.version}</shardingdb_version>
+        <!--
         <springboot_version>1.4.1.RELEASE</springboot_version>
         <spring.version>4.3.3.RELEASE</spring.version>
         <springboot_log4j_version>1.3.8.RELEASE</springboot_log4j_version>
@@ -24,14 +26,15 @@
         <javassist_version>3.15.0-GA</javassist_version>
         <parent-path>${project.basedir}</parent-path>
         <io.netty_version>4.1.1.Final</io.netty_version>
-
         <kafka_version>0.10.1.1</kafka_version>
+        -->
     </properties>
 
     <modules>
-        <module>shardingdb-cluster</module>
+        <module>shardingdb-core</module>
         <module>shardingdb-config</module>
-        <module>shardingdb-container</module>
+        <module>shardingdb-common</module>
+        <module>shardingdb-server</module>
         <module>shardingdb-filter</module>
         <module>shardingdb-protocol</module>
         <module>shardingdb-registry</module>
@@ -41,123 +44,58 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--
             <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-releasetrain</artifactId>
-                <version>Fowler-SR2</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>1.4.0.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.zy</groupId>
-                <artifactId>nut_common</artifactId>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>shardingdb-cluster</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.zy</groupId>
-                <artifactId>nut_services</artifactId>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>shardingdb-config</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.zy</groupId>
-                <artifactId>nut-web</artifactId>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>shardingdb-container</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>shardingdb-filter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>shardingdb-protocol</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>shardingdb-registry</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>shardingdb-remoting</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>shardingdb-sequence</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <version>${springboot_version}</version>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.25</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
-                <version>${springboot_version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-aop</artifactId>
-                <version>${springboot_version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-jpa</artifactId>
-                <version>${springboot_version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-redis</artifactId>
-                <version>${springboot_version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-redis</artifactId>
-                <version>${springboot_version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-legacy</artifactId>
-                <version>${springboot_legacy_version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-log4j</artifactId>
-                <version>${springboot_log4j_version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.javassist</groupId>
-                <artifactId>javassist</artifactId>
-                <version>${javassist_version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-all</artifactId>
-                <version>${io.netty_version}</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
-            <dependency>
-                <groupId>redis.clients</groupId>
-                <artifactId>jedis</artifactId>
-                <version>2.9.0</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
-            <dependency>
-                <groupId>org.mongodb</groupId>
-                <artifactId>mongo-java-driver</artifactId>
-                <version>3.4.2</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework -->
-            <dependency>
-                <groupId>org.apache.curator</groupId>
-                <artifactId>curator-framework</artifactId>
-                <version>2.11.1</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
-            <dependency>
-                <groupId>org.apache.curator</groupId>
-                <artifactId>curator-recipes</artifactId>
-                <version>2.11.1</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-examples -->
-            <dependency>
-                <groupId>org.apache.curator</groupId>
-                <artifactId>curator-examples</artifactId>
-                <version>2.11.1</version>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.2.2</version>
             </dependency>
 
             <dependency>
@@ -166,96 +104,29 @@
                 <version>20.0</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
-            <dependency>
-                <groupId>com.lmax</groupId>
-                <artifactId>disruptor</artifactId>
-                <version>3.3.6</version>
-            </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka_2.11 -->
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>kafka_2.11</artifactId>
-                <version>${kafka_version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>kafka-streams</artifactId>
-                <version>${kafka_version}</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/org.apache.kafka/connect-api -->
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>connect-api</artifactId>
-                <version>${kafka_version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>connect-file</artifactId>
-                <version>${kafka_version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>connect-runtime</artifactId>
-                <version>${kafka_version}</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/org.apache.kafka/connect-json -->
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>connect-json</artifactId>
-                <version>${kafka_version}</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
-            <dependency>
-                <groupId>com.google.protobuf</groupId>
-                <artifactId>protobuf-java</artifactId>
-                <version>3.2.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.avro</groupId>
-                <artifactId>avro</artifactId>
-                <version>1.8.1</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.apache.hbase/hbase-client -->
-            <dependency>
-                <groupId>org.apache.hbase</groupId>
-                <artifactId>hbase-client</artifactId>
-                <version>1.3.0</version>
-            </dependency>
-            <dependency>
-                <groupId>com.esotericsoftware</groupId>
-                <artifactId>kryo</artifactId>
-                <version>4.0.0</version>
-            </dependency>
-            <dependency>
-                <groupId>de.ruedigermoeller</groupId>
-                <artifactId>fst</artifactId>
-                <version>2.47</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
-            <dependency>
-                <groupId>com.lmax</groupId>
-                <artifactId>disruptor</artifactId>
-                <version>3.3.6</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper</artifactId>
-                <version>5.0.0</version>
-            </dependency>
-            <!--
+            <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
             <dependency>
                 <groupId>com.alibaba</groupId>
-                <artifactId>dubbo</artifactId>
-                <version>2.5.4</version>
-                <scope>system</scope>
-                <systemPath>${project.basedir}/../nut-libs/dubbo-2.5.4-SNAPSHOT.jar</systemPath>
+                <artifactId>druid</artifactId>
+                <version>1.0.29</version>
             </dependency>
-            -->
+
+
+            <!-- https://mvnrepository.com/artifact/junit/junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
 </project>

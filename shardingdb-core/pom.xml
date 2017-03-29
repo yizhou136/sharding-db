@@ -10,16 +10,19 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>shardingdb-config</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>shardingdb-core</artifactId>
+    <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>The ${project.artifactId} module of shardingdb project</description>
     <properties>
-        <skip_maven_deploy>false</skip_maven_deploy>
+        <skip_maven_deploy>true</skip_maven_deploy>
     </properties>
 
-    <modules>
-        <module>shardingdb-config-api</module>
-        <module>shardingdb-config-spring</module>
-    </modules>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
+    </dependencies>
 </project>
