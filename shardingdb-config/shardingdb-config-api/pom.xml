@@ -17,4 +17,12 @@
     <properties>
         <skip_maven_deploy>true</skip_maven_deploy>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>
