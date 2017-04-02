@@ -1,6 +1,7 @@
 package com.zy.shardingdb.config.file;
 
 import com.zy.shardingdb.config.DatabaseClusterConfig;
+import com.zy.shardingdb.config.GlobalConfig;
 import org.junit.Test;
 
 /**
@@ -17,6 +18,6 @@ public class PropertiesConfigTest {
         System.out.println((byte)'_');
         String file = "E:\\workspace\\web\\sharding-db\\shardingdb-core\\src\\test\\resources\\shardingdb.properties";
         PropertiesConfigParser propertiesConfigParser = new PropertiesConfigParser();
-        DatabaseClusterConfig databaseClusterConfig = propertiesConfigParser.parser(file);
+        GlobalConfig globalConfig = propertiesConfigParser.parser(file);
     }
 }

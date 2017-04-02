@@ -19,7 +19,7 @@ public class DatabaseClusterConfig {
         this.databaseClusterMap = databaseClusterMap;
     }
 
-    public String generateDefaultPropertiesKey(){
+    public static final String generateDefaultPropertiesKey(){
         return DefaultPropertiesKey;
     }
     public String generatePropertiesKey(String propertyName){

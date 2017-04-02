@@ -5,7 +5,7 @@ package com.zy.shardingdb.config;
  */
 public class RouterConfig {
     private String name;
-    private String shardingColumns;
+    private String shardingColumns[];
     private String algorithmClass;
     private String algorithmExpression;
 
@@ -17,11 +17,11 @@ public class RouterConfig {
         this.name = name;
     }
 
-    public String getShardingColumns() {
+    public String[] getShardingColumns() {
         return shardingColumns;
     }
 
-    public void setShardingColumns(String shardingColumns) {
+    public void setShardingColumns(String[] shardingColumns) {
         this.shardingColumns = shardingColumns;
     }
 
@@ -39,5 +39,10 @@ public class RouterConfig {
 
     public void setAlgorithmExpression(String algorithmExpression) {
         this.algorithmExpression = algorithmExpression;
+    }
+
+
+    public String generatePropertiesKey(String propertyName){
+        return String.format("router.%s.%s", getName(), propertyName);
     }
 }
