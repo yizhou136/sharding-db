@@ -33,8 +33,9 @@ public abstract class AbstractConfig implements Serializable{
             String rangePattern = matcher.group(4);
             List<String> actualNames = generateRangeItemArray(logicName, rangePattern);
             char lastOne = logicName.charAt(logicName.length()-1);
-            if ((lastOne < 'a' || lastOne > 'z') &&
-                    (lastOne < 'A' || lastOne > 'Z'))
+            if ((lastOne < 'a' || lastOne > 'z')
+                    && (lastOne < 'A' || lastOne > 'Z')
+                    && (lastOne < '0' || lastOne > '9'))
                 logicName = logicName.substring(0, logicName.length()-1);
             hashMap.put(logicName, actualNames.toArray(new String[actualNames.size()]));
         }

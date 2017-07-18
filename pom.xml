@@ -51,7 +51,12 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>shardingdb-config</artifactId>
+                <artifactId>shardingdb-config-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>shardingdb-config-spring</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

@@ -20,9 +20,9 @@ public class ConfigTest {
     @Test
     public void testParseNames(){
         Map<String,String[]> multimap = AbstractConfig.parserRangeNames(names);
-        Assert.assertEquals(4, multimap.get("weibo_").length);
+        Assert.assertEquals(4, multimap.get("weibo").length);
         Assert.assertEquals(1, multimap.get("user").length);
-        Assert.assertEquals(3, multimap.get("video_").length);
+        Assert.assertEquals(3, multimap.get("video").length);
         Assert.assertEquals(4, multimap.get("232_sdf_2").length);
     }
 

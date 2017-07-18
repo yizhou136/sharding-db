@@ -26,6 +26,11 @@
         </dependency>
 
         <dependency>
+            <groupId>com.zy</groupId>
+            <artifactId>shardingdb-config-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <scope>provided</scope>

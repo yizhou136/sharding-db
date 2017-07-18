@@ -58,11 +58,8 @@ public class ShardingDataSource extends AbstractDataSourceAdapter {
         //MetricsContext.init(shardingProperties);
         return null;//new ShardingConnection(shardingContext);
     }
-    
-    /**
-     * 关闭数据源,释放相关资源.
-     */
-    /*public void shutdown() {
-        executorEngine.shutdown();
-    }*/
+
+    public void shutdown() {
+        //executorEngine.shutdown();
+    }
 }
